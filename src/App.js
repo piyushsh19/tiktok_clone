@@ -1,31 +1,34 @@
-import React from 'react';
-import './App.css';
-import Video from './Video';
+import React, { useState, useEffect } from "react";
+import Video from "./Video";
+import db from "./firebase";
+import "./App.css";
 
 function App() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    db.collection("videos").onSnapshot((snapshot) =>
+      setVideos(snapshot.docs.map((doc) => doc.data()))
+    );
+  }, []);
+
   return (
+    // BEM
     <div className="app">
       <div className="app__videos">
-        <Video 
-          url = ""
-          channel="@piyushsh19"
-          description="The sunshine"
-          songs="the eve"
-          likes={123}
-          messages={400}
-          shares={22}
-        />
-        <Video 
-        url = ""
-        channel="@shsh19"
-        description="Cool its "
-        songs="the eve"
-        likes={1443}
-        messages={50}
-        shares={41}
-        />
-        <Video />
-        <Video />
+        {videos.map(
+          ({ url, channel, description, songs, likes, messages, shares }) => (
+            <Video
+              url={url}
+              channel={channel}
+              songs={songs}
+              likes={likes}
+              messages={messages}
+              description={description}
+              shares={shares}
+            />
+          )
+        )}
       </div>
     </div>
   );
