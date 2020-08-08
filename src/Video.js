@@ -3,7 +3,15 @@ import "./Video.css";
 import VideoFooter from './VideoFooter';
 import VideoSideBar from './VideoSideBar';
 
-function Video() {
+function Video({
+    url,
+    channel,
+    description,
+    songs,
+    likes,
+    messages,
+    shares
+}) {
     const [playing, setPlay] = useState(false);
     const videoRef = useRef(null); 
 
@@ -24,9 +32,9 @@ function Video() {
             onClick={onVideoPress}
             ref={videoRef}
             className="video__player" 
-            src=""></video>
-            <VideoFooter channel="@piyush19" description="the music video" song="DHEMME DEHMME"/>
-            <VideoSideBar/> 
+            src={url}></video>
+            <VideoFooter channel={channel} description={description} songs={songs}/>
+            <VideoSideBar likes={likes} messages={messages} shares={shares}/> 
         </div>
     )
 }

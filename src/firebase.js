@@ -1,3 +1,4 @@
+
 const firebaseConfig = {
     apiKey: "AIzaSyD2hMaJQ9PGXv1pdQB7yBPpA7btsnlKgaA",
     authDomain: "tik-tok-clone-d2279.firebaseapp.com",

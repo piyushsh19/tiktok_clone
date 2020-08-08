@@ -21,7 +21,7 @@ function VideoFooter({ channel, description, song }) {
                </div>
                
             </div>
-            <img className="videofooter__record" src="https://static.thenounproject.com/png/934821-200.png" alt =" image"/>
+            <img className="videofooter__record" src="https://static.thenounproject.com/png/934821-200.png" alt =""/>
         </div>
     )
 }
